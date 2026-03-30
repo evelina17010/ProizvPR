@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="328ef0d9b27f4fa999acabb984e656e2" Name="Diagram1">
+        <EntityTypeShape EntityType="PROIZVPRModel.Clients" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROIZVPRModel.Comments" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROIZVPRModel.Equipment" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROIZVPRModel.Failure_types" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROIZVPRModel.Logins" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROIZVPRModel.Repair_actions" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROIZVPRModel.Requests" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROIZVPRModel.Roles" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROIZVPRModel.Statuses" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROIZVPRModel.Users" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="PROIZVPRModel.FK__requests__id_cli__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__comments__id_req__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__comments__id_use__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__requests__id_equ__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__requests__id_fai__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__users__id_login__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__repair_ac__addit__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__repair_ac__id_ma__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__repair_ac__id_re__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__requests__assign__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__requests__id_sta__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="PROIZVPRModel.FK__users__id_role__440B1D61" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

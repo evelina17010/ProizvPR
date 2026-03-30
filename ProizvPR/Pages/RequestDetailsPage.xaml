@@ -1,0 +1,94 @@
+﻿<Page x:Class="ProizvPR.Pages.RequestDetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProizvPR.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+       Title="Детали заявки" Background="#F0F2F5" Loaded="Page_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="#2C3E50" Padding="10">
+            <Button x:Name="btnBack" Content="◀ НАЗАД" Background="#7F8C8D" Foreground="White" Cursor="Hand" Padding="15,8" Click="btnBack_Click"/>
+        </Border>
+        <ScrollViewer Grid.Row="1" Margin="10">
+            <StackPanel>
+                <Border Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="ИНФОРМАЦИЯ О ЗАЯВКЕ" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="НОМЕР:" Grid.Row="0" Grid.Column="0" FontWeight="Bold"/>
+                            <TextBlock x:Name="txtNumber" Grid.Row="0" Grid.Column="1"/>
+                            <TextBlock Text="ДАТА:" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
+                            <TextBlock x:Name="txtDate" Grid.Row="1" Grid.Column="1"/>
+                            <TextBlock Text="ОБОРУДОВАНИЕ:" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
+                            <TextBlock x:Name="txtEquipment" Grid.Row="2" Grid.Column="1"/>
+                            <TextBlock Text="КЛИЕНТ:" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
+                            <TextBlock x:Name="txtClient" Grid.Row="3" Grid.Column="1"/>
+                            <TextBlock Text="СТАТУС:" Grid.Row="4" Grid.Column="0" FontWeight="Bold"/>
+                            <ComboBox x:Name="cmbStatus" Width="200" HorizontalAlignment="Left" SelectionChanged="cmbStatus_SelectionChanged"/>
+                            <TextBlock Text="ИСПОЛНИТЕЛЬ:" Grid.Row="5" Grid.Column="0" FontWeight="Bold"/>
+                            <ComboBox x:Name="cmbExecutor" Width="200" HorizontalAlignment="Left" SelectionChanged="cmbExecutor_SelectionChanged"/>
+                            <TextBlock Text="СРОК:" Grid.Row="6" Grid.Column="0" FontWeight="Bold"/>
+                            <DatePicker x:Name="dpDeadline" Width="200" HorizontalAlignment="Left"/>
+                            <TextBlock Text="ОПИСАНИЕ:" Grid.Row="7" Grid.Column="0" FontWeight="Bold" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtDescription" Grid.Row="7" Grid.Column="1" Height="80" TextWrapping="Wrap" AcceptsReturn="True"/>
+                        </Grid>
+                        <Button x:Name="btnSave" Content="СОХРАНИТЬ" Background="#27AE60" Foreground="White" Cursor="Hand" Width="120" Height="35" Margin="0,15,0,0" Click="btnSave_Click"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="borderManagerActions" Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,10" Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBlock Text="ДЕЙСТВИЯ МЕНЕДЖЕРА" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                        <TextBlock Text="ПРИВЛЕЧЬ СПЕЦИАЛИСТА:" Margin="0,0,0,5"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <ComboBox x:Name="cmbSpecialist" Width="200" DisplayMemberPath="full_name" SelectedValuePath="id_user"/>
+                            <Button x:Name="btnAddSpecialist" Content="ПРИВЛЕЧЬ" Background="#9B59B6" Foreground="White" Cursor="Hand" Margin="10,0,0,0" Padding="15,5" Click="btnAddSpecialist_Click"/>
+                        </StackPanel>
+                        <TextBlock Text="ПРОДЛИТЬ СРОК:" Margin="0,0,0,5"/>
+                        <StackPanel Orientation="Horizontal">
+                            <DatePicker x:Name="dpNewDeadline" Width="150"/>
+                            <CheckBox x:Name="chkClientAgreement" Content="КЛИЕНТ СОГЛАСЕН" Margin="10,0,0,0"/>
+                            <Button x:Name="btnExtendDeadline" Content="ПРОДЛИТЬ" Background="#F39C12" Foreground="White" Cursor="Hand" Margin="10,0,0,0" Padding="15,5" Click="btnExtendDeadline_Click"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Background="White" CornerRadius="8" Padding="15" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="КОММЕНТАРИИ" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                        <ListView x:Name="lvComments" MaxHeight="200">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ДАТА" Width="120" DisplayMemberBinding="{Binding comment_date}"/>
+                                    <GridViewColumn Header="ПОЛЬЗОВАТЕЛЬ" Width="150" DisplayMemberBinding="{Binding user_name}"/>
+                                    <GridViewColumn Header="КОММЕНТАРИЙ" Width="400" DisplayMemberBinding="{Binding comment_text}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <TextBlock Text="НОВЫЙ КОММЕНТАРИЙ:" Margin="0,10,0,5"/>
+                        <TextBox x:Name="txtNewComment" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+                        <Button x:Name="btnAddComment" Content="ДОБАВИТЬ КОММЕНТАРИЙ" Background="#3498DB" Foreground="White" Cursor="Hand" Width="200" Height="35" Margin="0,10,0,0" Click="btnAddComment_Click"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
