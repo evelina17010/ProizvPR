@@ -27,9 +27,7 @@ namespace ProizvPR.Pages
         }
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtFullName.Text) ||
-                string.IsNullOrWhiteSpace(txtLogin.Text) ||
-                string.IsNullOrWhiteSpace(txtPassword.Password))
+            if (string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(txtLogin.Text) || string.IsNullOrWhiteSpace(txtPassword.Password))
             {
                 MessageBox.Show("ТЫ ВСЕ ПОЛЯ НЕ МОЖЕШЬ ЧТО-ЛИ ЗАПОЛНИТЬ!!!!");
                 return;

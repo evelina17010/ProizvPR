@@ -15,6 +15,7 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="#2C3E50" Padding="15">
             <StackPanel Orientation="Horizontal" >
+
                 <TextBlock Text="Учёт заявок на ремонт" FontSize="18" FontWeight="Bold" Foreground="White" VerticalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock x:Name="txtUserInfo" Foreground="White" VerticalAlignment="Center" Margin="0,0,15,0"/>
@@ -23,6 +24,7 @@
             </StackPanel>
         </Border>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image Source="c:\users\arkad\desktop\ещё какой-то мусор\proizvpr\proizvpr\pages\i.webp" Height="350" Width="350"/>
             <Button x:Name="btnRequests" Content="ЗАЯВКИ" Width="200" Height="80" Margin="10" Background="#3498DB" Foreground="White" FontSize="16" FontWeight="Bold" Cursor="Hand" Click="btnRequests_Click"/>
             <Button x:Name="btnStatistics" Content="СТАТИСТИКА" Width="200" Height="80" Margin="10" Background="#2ECC71" Foreground="White" FontSize="16" FontWeight="Bold" Cursor="Hand" Click="btnStatistics_Click"/>
         </StackPanel>

@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using ProizvPR.DBConn;
-using QRCoder;
+
 namespace ProizvPR.Pages
 {
     public partial class RequestsPage : Page
@@ -28,7 +23,6 @@ namespace ProizvPR.Pages
             {
                 btnAdd.Visibility = Visibility.Visible;
             }
-
             var statuses = Conn.db.Statuses.ToList();
             var statusesWithAll = new List<object>();
             statusesWithAll.Add(new { id_status = 0, status_name = "ВСЕ" });
@@ -41,34 +35,40 @@ namespace ProizvPR.Pages
             cmbStatusFilter.SelectedValuePath = "id_status";
             cmbStatusFilter.SelectedIndex = 0;
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             LoadRequests();
         }
-
         private void LoadRequests()
         {
             var allRequests = Conn.db.Requests.ToList();
             var result = new List<object>();
-
             foreach (var r in allRequests)
             {
                 var equipment = Conn.db.Equipment.FirstOrDefault(eq => eq.id_equipment == r.id_equipment);
                 var client = Conn.db.Clients.FirstOrDefault(cl => cl.id_client == r.id_client);
                 var status = Conn.db.Statuses.FirstOrDefault(st => st.id_status == r.id_status);
                 var executor = Conn.db.Users.FirstOrDefault(u => u.id_user == r.assigned_to);
-
                 string equipmentName = "Неизвестно";
                 string clientName = "Неизвестно";
                 string statusName = "Неизвестно";
                 string executorName = "Не назначен";
-
-                if (equipment != null) equipmentName = equipment.equipment_name;
-                if (client != null) clientName = client.client_name;
-                if (status != null) statusName = status.status_name;
-                if (executor != null) executorName = executor.full_name;
-
+                if (equipment != null)
+                {
+                    equipmentName = equipment.equipment_name;
+                }
+                if (client != null)
+                {
+                    clientName = client.client_name;
+                }
+                if (status != null)
+                {
+                    statusName = status.status_name;
+                }
+                if (executor != null)
+                {
+                    executorName = executor.full_name;
+                }
                 int statusId = r.id_status;
 
                 if (cmbStatusFilter.SelectedItem != null)
@@ -79,18 +79,14 @@ namespace ProizvPR.Pages
                         continue;
                     }
                 }
-
                 if (string.IsNullOrEmpty(txtSearch.Text) == false)
                 {
                     string search = txtSearch.Text.ToLower();
-                    if (r.request_number.ToLower().Contains(search) == false &&
-                        clientName.ToLower().Contains(search) == false &&
-                        equipmentName.ToLower().Contains(search) == false)
+                    if (r.request_number.ToLower().Contains(search) == false && clientName.ToLower().Contains(search) == false && equipmentName.ToLower().Contains(search) == false)
                     {
                         continue;
                     }
                 }
-
                 var item = new
                 {
                     r.id_request,
@@ -108,7 +104,6 @@ namespace ProizvPR.Pages
 
             lvRequests.ItemsSource = result;
         }
-
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             LoadRequests();
@@ -128,7 +123,7 @@ namespace ProizvPR.Pages
         {
             if (selectedRequest == null)
             {
-                MessageBox.Show("ВЫБЕРИ ЗАЯВКУ!");
+                MessageBox.Show("Выберите заявку для просмотра деталей", "Внимание",MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -140,7 +135,7 @@ namespace ProizvPR.Pages
         {
             if (selectedRequest == null)
             {
-                MessageBox.Show("ВЫБЕРИ ЗАЯВКУ!");
+                MessageBox.Show("Выберите заявку для редактирования", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -172,7 +167,7 @@ namespace ProizvPR.Pages
                     var requestToUpdate = Conn.db.Requests.FirstOrDefault(r => r.id_request == id);
                     if (requestToUpdate != null)
                     {
-                        requestToUpdate.qr_code_generated = true; 
+                        requestToUpdate.qr_code_generated = true;
                         Conn.db.SaveChanges();
                     }
                 }

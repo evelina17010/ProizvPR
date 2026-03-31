@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="#2C3E50" Padding="10">
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="btnBack" Content="◀ НАЗАД" Background="#7F8C8D" Foreground="White" Cursor="Hand" Padding="15,8" Click="btnBack_Click"/>
+                <Button x:Name="btnBack" Content=" НАЗАД" Background="#7F8C8D" Foreground="White" Cursor="Hand" Padding="15,8" Click="btnBack_Click"/>
                 <TextBlock Text="УПРАВЛЕНИЕ ЗАЯВКАМИ" FontSize="18" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="20,0,0,0"/>
             </StackPanel>
         </Border>

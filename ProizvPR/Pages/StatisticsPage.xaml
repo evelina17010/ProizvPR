@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="#2C3E50" Padding="10">
-            <Button x:Name="btnBack" Content="◀ НАЗАД" Background="#7F8C8D" Foreground="White" Cursor="Hand" Padding="15,8" Click="btnBack_Click"/>
+            <Button x:Name="btnBack" Content="НАЗАД" Background="#7F8C8D" Foreground="White" Cursor="Hand" Padding="15,8" Click="btnBack_Click"/>
         </Border>
         <ScrollViewer Grid.Row="1" Margin="10">
             <StackPanel>

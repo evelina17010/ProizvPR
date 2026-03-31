@@ -61,7 +61,6 @@ namespace ProizvPR.Pages
 
             lvFailureStats.ItemsSource = stats;
         }
-
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

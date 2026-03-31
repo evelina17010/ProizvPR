@@ -37,16 +37,12 @@ namespace ProizvPR.Pages
         {
             var equipment = Conn.db.Equipment.ToList();
             cmbEquipment.ItemsSource = equipment;
-
             var clients = Conn.db.Clients.ToList();
             cmbClient.ItemsSource = clients;
-
             var failureTypes = Conn.db.Failure_types.ToList();
             cmbFailureType.ItemsSource = failureTypes;
-
             var executors = Conn.db.Users.Where(u => u.id_role == 3).ToList();
             cmbExecutor.ItemsSource = executors;
-
             if (editRequestId.HasValue)
             {
                 var request = Conn.db.Requests.FirstOrDefault(r => r.id_request == editRequestId.Value);
@@ -62,7 +58,6 @@ namespace ProizvPR.Pages
                 }
             }
         }
-
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNumber.Text))
@@ -70,25 +65,21 @@ namespace ProizvPR.Pages
                 MessageBox.Show("ВВЕДИ НОМЕР ЗАЯВКИ!");
                 return;
             }
-
             if (cmbEquipment.SelectedItem == null)
             {
                 MessageBox.Show("ВЫБЕРИ ОБОРУДОВАНИЕ!");
                 return;
             }
-
             if (cmbClient.SelectedItem == null)
             {
                 MessageBox.Show("ВЫБЕРИ КЛИЕНТА!");
                 return;
             }
-
             if (cmbFailureType.SelectedItem == null)
             {
                 MessageBox.Show("ВЫБЕРИ ТИП НЕИСПРАВНОСТИ!");
                 return;
             }
-
             try
             {
                 if (editRequestId.HasValue)
@@ -100,7 +91,6 @@ namespace ProizvPR.Pages
                         request.id_equipment = (int)cmbEquipment.SelectedValue;
                         request.id_client = (int)cmbClient.SelectedValue;
                         request.id_failure_type = (int)cmbFailureType.SelectedValue;
-
                         if (cmbExecutor.SelectedItem != null)
                         {
                             request.assigned_to = (int)cmbExecutor.SelectedValue;
@@ -138,7 +128,6 @@ namespace ProizvPR.Pages
                     {
                         newRequest.assigned_to = (int)cmbExecutor.SelectedValue;
                     }
-
                     newRequest.deadline_date = dpDeadline.SelectedDate;
                     newRequest.description = txtDescription.Text;
 
@@ -149,8 +138,7 @@ namespace ProizvPR.Pages
                     }
 
                     newRequest.client_agreement = false;
-                    newRequest.qr_code_generated = false;
-
+                   newRequest.qr_code_generated = false;
                     Conn.db.Requests.Add(newRequest);
                     Conn.db.SaveChanges();
                     MessageBox.Show("ЗАЯВКА ДОБАВЛЕНА!");
@@ -163,7 +151,6 @@ namespace ProizvPR.Pages
                 MessageBox.Show("ОШИБКА: " + ex.Message);
             }
         }
-
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

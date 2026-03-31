@@ -36,28 +36,24 @@ namespace ProizvPR.Pages
             try
             {
                 var login = Conn.db.Logins.FirstOrDefault(l => l.login == txtLogin.Text && l.password == txtPassword.Password);
-
                 if (login == null)
                 {
                     MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-
-                var currentUser = Conn.db.Users.FirstOrDefault(u => u.id_login == login.id_login);
+               var currentUser = Conn.db.Users.FirstOrDefault(u => u.id_login == login.id_login);
 
                 if (currentUser == null)
                 {
                     MessageBox.Show("Пользователь не найден!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-
                 var role = Conn.db.Roles.FirstOrDefault(r => r.id_role == currentUser.id_role);
                 string roleName = "Исполнитель";
                 if (role != null)
                 {
                     roleName = role.role_name;
                 }
-
                 MessageBox.Show("Добро пожаловать, " + currentUser.full_name + "!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 NavigationService.Navigate(new MainMenuPage(currentUser, roleName));
             }
@@ -66,7 +62,6 @@ namespace ProizvPR.Pages
                 MessageBox.Show("Ошибка: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new RegisterPage());
