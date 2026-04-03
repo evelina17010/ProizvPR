@@ -21,7 +21,7 @@ namespace ProizvPR.Pages
     /// </summary>
     public partial class RegisterPage : Page
     {
-        public RegisterPage()
+       public RegisterPage()
         {
             InitializeComponent();
         }
@@ -71,7 +71,6 @@ namespace ProizvPR.Pages
                 MessageBox.Show("ОШИБКА: " + ex.Message);
             }
         }
-
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

@@ -32,7 +32,6 @@ namespace ProizvPR.Pages
                 MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
             try
             {
                 var login = Conn.db.Logins.FirstOrDefault(l => l.login == txtLogin.Text && l.password == txtPassword.Password);

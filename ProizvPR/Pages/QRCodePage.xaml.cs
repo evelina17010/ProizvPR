@@ -17,21 +17,18 @@ namespace ProizvPR.Pages
             InitializeComponent();
             GenerateQRCode(url);
         }
-
         private void GenerateQRCode(string url)
         {
             using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
             using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(url, QRCodeGenerator.ECCLevel.Q))
             using (QRCode qrCode = new QRCode(qrCodeData))
-            {
-              
+            {        
                 using (Bitmap qrBitmap = qrCode.GetGraphic(20))
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
                         qrBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                         ms.Position = 0;
-
                         BitmapImage bi = new BitmapImage();
                         bi.BeginInit();
                         bi.StreamSource = ms;

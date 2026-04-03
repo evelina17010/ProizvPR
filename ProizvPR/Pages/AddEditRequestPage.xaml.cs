@@ -24,7 +24,6 @@ namespace ProizvPR.Pages
         private int? editRequestId;
         private Users currentUser;
         private string roleName;
-
         public AddEditRequestPage(int? requestId, Users user, string role)
         {
             InitializeComponent();
@@ -32,7 +31,6 @@ namespace ProizvPR.Pages
             currentUser = user;
             roleName = role;
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var equipment = Conn.db.Equipment.ToList();
@@ -123,7 +121,6 @@ namespace ProizvPR.Pages
                     newRequest.id_equipment = (int)cmbEquipment.SelectedValue;
                     newRequest.id_client = (int)cmbClient.SelectedValue;
                     newRequest.id_failure_type = (int)cmbFailureType.SelectedValue;
-
                     if (cmbExecutor.SelectedItem != null)
                     {
                         newRequest.assigned_to = (int)cmbExecutor.SelectedValue;

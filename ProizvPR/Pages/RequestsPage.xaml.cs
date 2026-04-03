@@ -12,7 +12,6 @@ namespace ProizvPR.Pages
         private Users currentUser;
         private string roleName;
         private object selectedRequest;
-
         public RequestsPage(Users user, string role)
         {
             InitializeComponent();
@@ -108,17 +107,14 @@ namespace ProizvPR.Pages
         {
             LoadRequests();
         }
-
         private void cmbStatusFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LoadRequests();
         }
-
         private void lvRequests_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedRequest = lvRequests.SelectedItem;
         }
-
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
             if (selectedRequest == null)

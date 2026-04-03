@@ -19,28 +19,20 @@
             <Border Background="White" CornerRadius="8" Padding="20">
                 <StackPanel>
                     <TextBlock Text="ДОБАВЛЕНИЕ ЗАЯВКИ" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,20"/>
-
                     <TextBlock Text="НОМЕР ЗАЯВКИ" Foreground="#34495E" Margin="0,0,0,5"/>
                     <TextBox x:Name="txtNumber" Height="35" Margin="0,0,0,15" Padding="10,0"/>
-
                     <TextBlock Text="ОБОРУДОВАНИЕ" Foreground="#34495E" Margin="0,0,0,5"/>
                     <ComboBox x:Name="cmbEquipment" Height="35" Margin="0,0,0,15" DisplayMemberPath="equipment_name" SelectedValuePath="id_equipment"/>
-
                     <TextBlock Text="КЛИЕНТ" Foreground="#34495E" Margin="0,0,0,5"/>
                     <ComboBox x:Name="cmbClient" Height="35" Margin="0,0,0,15" DisplayMemberPath="client_name" SelectedValuePath="id_client"/>
-
                     <TextBlock Text="ТИП НЕИСПРАВНОСТИ" Foreground="#34495E" Margin="0,0,0,5"/>
                     <ComboBox x:Name="cmbFailureType" Height="35" Margin="0,0,0,15" DisplayMemberPath="type_name" SelectedValuePath="id_failure_type"/>
-
                     <TextBlock Text="ИСПОЛНИТЕЛЬ" Foreground="#34495E" Margin="0,0,0,5"/>
                     <ComboBox x:Name="cmbExecutor" Height="35" Margin="0,0,0,15" DisplayMemberPath="full_name" SelectedValuePath="id_user"/>
-
                     <TextBlock Text="СРОК ВЫПОЛНЕНИЯ" Foreground="#34495E" Margin="0,0,0,5"/>
                     <DatePicker x:Name="dpDeadline" Height="35" Margin="0,0,0,15"/>
-
                     <TextBlock Text="ОПИСАНИЕ ПРОБЛЕМЫ" Foreground="#34495E" Margin="0,0,0,5"/>
                     <TextBox x:Name="txtDescription" Height="100" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,20" Padding="10,0"/>
-
                     <Button x:Name="btnSave" Content="СОХРАНИТЬ" Height="40" Background="#27AE60" Foreground="White" FontWeight="Bold" Cursor="Hand" Click="btnSave_Click"/>
                 </StackPanel>
             </Border>

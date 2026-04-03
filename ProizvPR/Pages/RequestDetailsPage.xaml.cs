@@ -33,7 +33,6 @@ namespace ProizvPR.Pages
             currentUser = user;
             roleName = role;
         }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             currentRequest = Conn.db.Requests.FirstOrDefault(r => r.id_request == requestId);
@@ -43,7 +42,6 @@ namespace ProizvPR.Pages
                 MessageBox.Show("ЗАЯВКА НЕ НАЙДЕНА");
                 return;
             }
-
             var equipment = Conn.db.Equipment.FirstOrDefault(eq => eq.id_equipment == currentRequest.id_equipment);
             var client = Conn.db.Clients.FirstOrDefault(c => c.id_client == currentRequest.id_client);
             txtNumber.Text = currentRequest.request_number;
@@ -58,7 +56,6 @@ namespace ProizvPR.Pages
             cmbStatus.DisplayMemberPath = "status_name";
             cmbStatus.SelectedValuePath = "id_status";
             cmbStatus.SelectedValue = currentRequest.id_status;
-
             var executors = Conn.db.Users.Where(u => u.id_role == 3).ToList();
             var executorList = new List<dynamic>();
             executorList.Add(new { id_user = 0, full_name = "Не назначен" });
@@ -69,7 +66,6 @@ namespace ProizvPR.Pages
             cmbExecutor.ItemsSource = executorList;
             cmbExecutor.DisplayMemberPath = "full_name";
             cmbExecutor.SelectedValuePath = "id_user";
-
             if (currentRequest.assigned_to.HasValue)
             {
                 cmbExecutor.SelectedValue = currentRequest.assigned_to.Value;
@@ -83,7 +79,6 @@ namespace ProizvPR.Pages
             {
                 dpDeadline.SelectedDate = currentRequest.deadline_date.Value;
             }
-
             if (roleName == "Менеджер" || roleName == "Администратор")
             {
                 borderManagerActions.Visibility = Visibility.Visible;
@@ -95,7 +90,6 @@ namespace ProizvPR.Pages
             }
             LoadComments();
         }
-
         private void LoadComments()
         {
             var allComments = Conn.db.Comments.Where(c => c.id_request == requestId).OrderByDescending(c => c.comment_date).ToList();
@@ -114,11 +108,9 @@ namespace ProizvPR.Pages
             }
             lvComments.ItemsSource = result;
         }
-
         private void cmbStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
-
         private void cmbExecutor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }

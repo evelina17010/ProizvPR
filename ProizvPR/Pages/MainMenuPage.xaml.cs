@@ -23,7 +23,6 @@ namespace ProizvPR.Pages
     {
         private Users currentUser;
         private string roleName;
-
         public MainMenuPage(Users user, string role)
         {
             InitializeComponent();
@@ -31,17 +30,14 @@ namespace ProizvPR.Pages
             roleName = role;
             txtUserInfo.Text = user.full_name + " (" + role + ")";
         }
-
         private void btnRequests_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new RequestsPage(currentUser, roleName));
         }
-
         private void btnStatistics_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new StatisticsPage());
         }
-
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AuthPage());
